@@ -1,12 +1,13 @@
 //
 //  ViewController.swift
-//  Eventful-Swift
+//  Example
 //
-//  Created by Mitch Treece on 3/17/16.
+//  Created by Mitch Treece on 3/18/16.
 //  Copyright © 2016 Mitch Treece. All rights reserved.
 //
 
 import UIKit
+import EventfulSwift
 
 class ViewController: UIViewController {
 
@@ -20,6 +21,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
 
 }
 
