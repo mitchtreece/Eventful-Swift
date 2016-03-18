@@ -12,6 +12,12 @@
 		301E9A0C1C9B9EEA00C7DC2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301E9A0A1C9B9EEA00C7DC2B /* Main.storyboard */; };
 		301E9A0E1C9B9EEA00C7DC2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 301E9A0D1C9B9EEA00C7DC2B /* Assets.xcassets */; };
 		301E9A111C9B9EEA00C7DC2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301E9A0F1C9B9EEA00C7DC2B /* LaunchScreen.storyboard */; };
+		301E9A201C9B9FD800C7DC2B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1A1C9B9FD800C7DC2B /* Event.swift */; };
+		301E9A211C9B9FD800C7DC2B /* EventDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1B1C9B9FD800C7DC2B /* EventDispatcher.swift */; };
+		301E9A221C9B9FD800C7DC2B /* EventListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1C1C9B9FD800C7DC2B /* EventListener.swift */; };
+		301E9A231C9B9FD800C7DC2B /* EventRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1D1C9B9FD800C7DC2B /* EventRef.swift */; };
+		301E9A241C9B9FD800C7DC2B /* EventToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1E1C9B9FD800C7DC2B /* EventToken.swift */; };
+		301E9A251C9B9FD800C7DC2B /* ObservableValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301E9A1F1C9B9FD800C7DC2B /* ObservableValue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		301E9A0D1C9B9EEA00C7DC2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		301E9A101C9B9EEA00C7DC2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		301E9A121C9B9EEA00C7DC2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		301E9A1A1C9B9FD800C7DC2B /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		301E9A1B1C9B9FD800C7DC2B /* EventDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDispatcher.swift; sourceTree = "<group>"; };
+		301E9A1C1C9B9FD800C7DC2B /* EventListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventListener.swift; sourceTree = "<group>"; };
+		301E9A1D1C9B9FD800C7DC2B /* EventRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRef.swift; sourceTree = "<group>"; };
+		301E9A1E1C9B9FD800C7DC2B /* EventToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventToken.swift; sourceTree = "<group>"; };
+		301E9A1F1C9B9FD800C7DC2B /* ObservableValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableValue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 		301E9A051C9B9EEA00C7DC2B /* Eventful-Swift */ = {
 			isa = PBXGroup;
 			children = (
+				301E9A191C9B9FA800C7DC2B /* Eventful-Swift */,
 				301E9A061C9B9EEA00C7DC2B /* AppDelegate.swift */,
 				301E9A081C9B9EEA00C7DC2B /* ViewController.swift */,
 				301E9A181C9B9EF000C7DC2B /* Resources */,
@@ -65,11 +78,24 @@
 			isa = PBXGroup;
 			children = (
 				301E9A0A1C9B9EEA00C7DC2B /* Main.storyboard */,
-				301E9A0D1C9B9EEA00C7DC2B /* Assets.xcassets */,
 				301E9A0F1C9B9EEA00C7DC2B /* LaunchScreen.storyboard */,
+				301E9A0D1C9B9EEA00C7DC2B /* Assets.xcassets */,
 				301E9A121C9B9EEA00C7DC2B /* Info.plist */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		301E9A191C9B9FA800C7DC2B /* Eventful-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				301E9A1A1C9B9FD800C7DC2B /* Event.swift */,
+				301E9A1B1C9B9FD800C7DC2B /* EventDispatcher.swift */,
+				301E9A1C1C9B9FD800C7DC2B /* EventListener.swift */,
+				301E9A1D1C9B9FD800C7DC2B /* EventRef.swift */,
+				301E9A1E1C9B9FD800C7DC2B /* EventToken.swift */,
+				301E9A1F1C9B9FD800C7DC2B /* ObservableValue.swift */,
+			);
+			path = "Eventful-Swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +169,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301E9A221C9B9FD800C7DC2B /* EventListener.swift in Sources */,
 				301E9A091C9B9EEA00C7DC2B /* ViewController.swift in Sources */,
+				301E9A251C9B9FD800C7DC2B /* ObservableValue.swift in Sources */,
+				301E9A231C9B9FD800C7DC2B /* EventRef.swift in Sources */,
+				301E9A211C9B9FD800C7DC2B /* EventDispatcher.swift in Sources */,
+				301E9A201C9B9FD800C7DC2B /* Event.swift in Sources */,
 				301E9A071C9B9EEA00C7DC2B /* AppDelegate.swift in Sources */,
+				301E9A241C9B9FD800C7DC2B /* EventToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +324,7 @@
 				301E9A171C9B9EEA00C7DC2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
