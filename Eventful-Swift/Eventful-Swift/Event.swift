@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct Event<T> {
+public struct Event<T> {
     
-    typealias ValueType = T
-    typealias ListenerType = EventListener<T>
-    typealias HandlerType = ListenerType.HandlerType
-    typealias TokenType = EventToken<T>
+    public typealias ValueType = T
+    public typealias ListenerType = EventListener<T>
+    public typealias HandlerType = ListenerType.HandlerType
+    public typealias TokenType = EventToken<T>
     
     private var listeners = [ListenerType]()
     
-    mutating func addListener(handler: HandlerType) -> TokenType {
+    public mutating func addListener(handler: HandlerType) -> TokenType {
         let listener = ListenerType(handler: handler)
         self.listeners.append(listener)
         let token = EventToken(listener: listener)
         return token
     }
     
-    mutating func removeListener(token: TokenType) {
+    public mutating func removeListener(token: TokenType) {
         
         // We cannot just remove the listener from the array,
         // because to do that our listener class would have
@@ -46,11 +46,11 @@ struct Event<T> {
         
     }
     
-    mutating func removeListeners() {
+    public mutating func removeListeners() {
         self.listeners.removeAll()
     }
     
-    func dispatch(value: ValueType) {
+    public func dispatch(value: ValueType) {
         for listener in self.listeners {
             listener.handler(value)
         }

@@ -8,44 +8,44 @@
 
 import Foundation
 
-infix operator *= { associativity left precedence 80 }
-func *= <T>(inout observable: ObservableValue<T>, value: T) {
+infix operator ~>> { associativity left precedence 80 }
+public func ~>> <T>(inout observable: ObservableValue<T>, value: T) {
     observable.set(value)
 }
 
-prefix operator * {}
-prefix func * <T>(value: T) -> ObservableValue<T> {
+prefix operator ~ {}
+public prefix func ~ <T>(value: T) -> ObservableValue<T> {
     return ObservableValue(value)
 }
 
-postfix operator * {}
-postfix func * <T>(inout observable: ObservableValue<T>) -> T {
+postfix operator ~ {}
+public postfix func ~ <T>(inout observable: ObservableValue<T>) -> T {
     return observable.get()
 }
 
-struct ObservableValueInfo<T> {
+public struct ObservableValueInfo<T> {
     
-    typealias ValueType = T
+    public typealias ValueType = T
     
-    let oldValue: ValueType
-    let newValue: ValueType
+    public let oldValue: ValueType
+    public let newValue: ValueType
     
-    init(_ old: ValueType, _ new: ValueType) {
+    internal init(_ old: ValueType, _ new: ValueType) {
         self.oldValue = old
         self.newValue = new
     }
     
 }
 
-struct ObservableValue<T>: EventDispatcher {
+public struct ObservableValue<T>: EventDispatcher {
     
-    typealias ValueType = T
-    typealias ObservationReturnType = ObservableValueInfo<ValueType>
+    public typealias ValueType = T
+    public typealias ObservationReturnType = ObservableValueInfo<ValueType>
     
-    var event_willChangeValue = EventRef<ObservationReturnType>()
-    var event_didChangeValue = EventRef<ObservationReturnType>()
+    public var event_willChangeValue = EventRef<ObservationReturnType>()
+    public var event_didChangeValue = EventRef<ObservationReturnType>()
     
-    var value: ValueType {
+    public var value: ValueType {
         willSet {
             let info = ObservableValueInfo(value, newValue)
             self.event_willChangeValue.dispatch(info)
@@ -56,20 +56,20 @@ struct ObservableValue<T>: EventDispatcher {
         }
     }
     
-    func removeEventListeners() {
+    public func removeEventListeners() {
         self.event_willChangeValue.removeListeners()
         self.event_didChangeValue.removeListeners()
     }
     
-    mutating func set(value: ValueType) {
+    public mutating func set(value: ValueType) {
         self.value = value
     }
     
-    func get() -> ValueType {
+    public func get() -> ValueType {
         return self.value
     }
     
-    init(_ value: ValueType) {
+    public init(_ value: ValueType) {
         self.value = value
     }
     

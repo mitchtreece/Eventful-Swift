@@ -8,12 +8,8 @@
 
 import Foundation
 
-protocol EventDispatcher {
+public protocol EventDispatcher {
     
     func removeEventListeners()
     
 }
-
-// Observable's:
-// -- Value Observation
-// -- Object Observation (initialization | deallocation)

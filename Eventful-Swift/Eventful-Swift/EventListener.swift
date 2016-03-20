@@ -8,14 +8,14 @@
 
 import Foundation
 
-class EventListener<T> {
+public class EventListener<T> {
     
-    typealias ValueType = T
-    typealias HandlerType = (ValueType) -> ()
+    public typealias ValueType = T
+    public typealias HandlerType = (ValueType) -> ()
     
     internal var handler: HandlerType
     
-    init(handler h: HandlerType) {
+    internal init(handler h: HandlerType) {
         self.handler = h
     }
     

@@ -8,36 +8,36 @@
 
 import Foundation
 
-class EventRef<T> {
+public class EventRef<T> {
     
-    typealias ValueType = T
-    typealias ListenerType = EventListener<T>
-    typealias HandlerType = ListenerType.HandlerType
-    typealias TokenType = EventToken<T>
+    public typealias ValueType = T
+    public typealias ListenerType = EventListener<T>
+    public typealias HandlerType = ListenerType.HandlerType
+    public typealias TokenType = EventToken<T>
     
     private var event: Event<ValueType>
     
-    func addListener(handler: HandlerType) -> TokenType {
+    public func addListener(handler: HandlerType) -> TokenType {
         return self.event.addListener(handler)
     }
     
-    func removeListener(token: TokenType) {
+    public func removeListener(token: TokenType) {
         self.event.removeListener(token)
     }
     
-    func removeListeners() {
+    public func removeListeners() {
         self.event.removeListeners()
     }
     
-    func dispatch(value: ValueType) {
+    public func dispatch(value: ValueType) {
         self.event.dispatch(value)
     }
     
-    init(event: Event<ValueType>) {
+    public init(event: Event<ValueType>) {
         self.event = event
     }
     
-    convenience init() {
+    public convenience init() {
         self.init(event: Event<ValueType>())
     }
     

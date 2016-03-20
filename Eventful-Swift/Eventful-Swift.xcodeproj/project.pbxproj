@@ -60,10 +60,10 @@
 			children = (
 				3055D5051C9C9AE6000F6FA8 /* Eventful-Swift.h */,
 				30D984A81C9C9DB6009632A3 /* Event.swift */,
-				30D984A91C9C9DB6009632A3 /* EventDispatcher.swift */,
-				30D984AA1C9C9DB6009632A3 /* EventListener.swift */,
 				30D984AB1C9C9DB6009632A3 /* EventRef.swift */,
 				30D984AC1C9C9DB6009632A3 /* EventToken.swift */,
+				30D984AA1C9C9DB6009632A3 /* EventListener.swift */,
+				30D984A91C9C9DB6009632A3 /* EventDispatcher.swift */,
 				30D984AD1C9C9DB6009632A3 /* ObservableValue.swift */,
 				3055D5071C9C9AE6000F6FA8 /* Info.plist */,
 			);

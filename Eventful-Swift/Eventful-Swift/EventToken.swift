@@ -8,13 +8,13 @@
 
 import Foundation
 
-class EventToken<T> {
+public class EventToken<T> {
     
-    typealias ListenerType = EventListener<T>
+    public typealias ListenerType = EventListener<T>
     
     internal var listener: ListenerType
     
-    init(listener: ListenerType) {
+    internal init(listener: ListenerType) {
         self.listener = listener
     }
     

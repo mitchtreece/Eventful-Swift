@@ -126,18 +126,18 @@ Having to manually type out `ObservableValue`, and access the underlying `value`
 ```swift
 // These are all valid ways to initialize an ObservableValue
 var x = ObservableValue(10)
-var y = *("Hello, world!")
-var z = *[1, 2, 3]
+var y = ~("Hello, world!")
+var z = ~[1, 2, 3]
 
-// ObservableValue's can be modified by using the '*=' operator
-x *= 13
-y *= "Hola!"
-z *= [4, 5, 6]
+// ObservableValue's can be modified by using the '~>>' operator
+x ~>> 13
+y ~>> "Hola!"
+z ~>> [4, 5, 6]
 
-// An ObservableValue's underlying value can be retrieved via a postfix '*'
-let xValue = x*
-let yValue = y*
-print("value of z is \(z*)")
+// An ObservableValue's underlying value can be retrieved via a postfix '~'
+let xValue = x~
+let yValue = y~
+print("value of z is \(z~)")
 ```
 
-You can initialize an `ObservableValue` by prefixing a value with an asterisk (`*`). You can optionally also surround the value with parenthesis. The `*=` assignment operator can be used to directly assign a value to an `ObservableValue`'s underlying `value` member. Lastly, you can directly access the underlying `value` member with a postfix asterisk (`*`).
+You can initialize an `ObservableValue` by prefixing a value with an tilde (`~`). You can optionally also surround the value with parenthesis. The `~>>` assignment operator can be used to directly assign a value to an `ObservableValue`'s underlying `value` member. Lastly, you can directly access the underlying `value` member with a postfix tilde (`~`).
