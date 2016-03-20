@@ -12,10 +12,10 @@ class Person: EventDispatcher {
 
     var name: String
     var age: Int
-    var event_willDie = EventRef<Bool>()
+    var event_died = EventRef<Bool>()
 
     func removeEventListeners() {
-        self.event_willDie.removeListeners()
+        self.event_died.removeListeners()
     }
 
     init(name: String, age: Int) {
@@ -24,7 +24,7 @@ class Person: EventDispatcher {
     }
 
     deinit {
-        self.event_willDie.dispatch(true)
+        self.event_died.dispatch(true)
     }
 
 }
@@ -41,7 +41,7 @@ Listening and reacting to events is just as easy as dispatching them. You simply
 ```swift
 var person: Person? = Person(name: "Bob", age: 23)
 person?.event.willDie.addListener { (value: Bool) in
-    print("\(person?.name) is about to die 😭")
+    print("Bob died 😭")
 }
 
 print("\(person?.name) was born 😄")
@@ -54,7 +54,7 @@ The console output will read:
 ```
 Bob was born 😄
 Bob is living his life...
-Bob is about to die 😭
+Bob died 😭
 ```
 
 In the above example, we added a listener to our person's `willDie` event. When the event was dispatched we simply printed `Bob is about to die 😭` to the console.

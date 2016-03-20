@@ -12,6 +12,7 @@
 		3055D4E81C9C99CC000F6FA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3055D4E61C9C99CC000F6FA8 /* Main.storyboard */; };
 		3055D4EA1C9C99CC000F6FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3055D4E91C9C99CC000F6FA8 /* Assets.xcassets */; };
 		3055D4ED1C9C99CC000F6FA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3055D4EB1C9C99CC000F6FA8 /* LaunchScreen.storyboard */; };
+		30B914591C9F5537009EE402 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B914581C9F5537009EE402 /* Person.swift */; };
 		30D984A31C9C9D6B009632A3 /* EventfulSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30D984A21C9C9D6B009632A3 /* EventfulSwift.framework */; };
 		30D984A41C9C9D6B009632A3 /* EventfulSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30D984A21C9C9D6B009632A3 /* EventfulSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -38,6 +39,7 @@
 		3055D4E91C9C99CC000F6FA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3055D4EC1C9C99CC000F6FA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3055D4EE1C9C99CC000F6FA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30B914581C9F5537009EE402 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		30D984A21C9C9D6B009632A3 /* EventfulSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = EventfulSwift.framework; path = "/Users/Mitch/Library/Developer/Xcode/DerivedData/Eventful-Swift-aroyhklfbocsrfatxlzpuuzlptvz/Build/Products/Debug-iphoneos/EventfulSwift.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +76,7 @@
 			children = (
 				3055D4E21C9C99CC000F6FA8 /* AppDelegate.swift */,
 				3055D4E41C9C99CC000F6FA8 /* ViewController.swift */,
+				30B914581C9F5537009EE402 /* Person.swift */,
 				30D984A71C9C9D7B009632A3 /* Resources */,
 				30D984A61C9C9D6F009632A3 /* Frameworks */,
 			);
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B914591C9F5537009EE402 /* Person.swift in Sources */,
 				3055D4E51C9C99CC000F6FA8 /* ViewController.swift in Sources */,
 				3055D4E31C9C99CC000F6FA8 /* AppDelegate.swift in Sources */,
 			);

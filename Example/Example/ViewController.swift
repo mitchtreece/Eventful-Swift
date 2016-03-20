@@ -12,7 +12,7 @@ import EventfulSwift
 class ViewController: UIViewController {
 
     @IBOutlet var label: UILabel?
-    var x: ObservableValue<Int> = ~(0)
+    var x: ObservableValue<Int> = ~(13)
     
     override func viewDidLoad() {
         
@@ -21,11 +21,25 @@ class ViewController: UIViewController {
         x.event_didChangeValue.addListener { (info) -> () in
             self.label?.text = "x = \(info.newValue)"
         }
-        
-        x ~>> 13
-        
+                
         let recognizer = UITapGestureRecognizer(target: self, action: "handleTap:")
         self.view.addGestureRecognizer(recognizer)
+        
+        createPerson()
+        
+    }
+    
+    func createPerson() {
+        
+        var person: Person? = Person(name: "Bob", age: 23)
+        person?.event_died.addListener { (value: Bool) in
+            print("Bob died 😭")
+        }
+        
+        print("\(person?.name) was born 😄")
+        print("\(person?.name) is living his life...")
+        
+        person = nil
         
     }
     
