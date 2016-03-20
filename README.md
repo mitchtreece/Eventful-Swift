@@ -29,7 +29,7 @@ class Person: EventDispatcher {
 
 }
 ```
-In the above example, the `Person` class conforms to the `EventDispatcher` protocol, and defines one event: `event_willDie` which gets posted when the `Person` instance is about to be deallocated. The event is of the `EventRef<T>` type, where `T` is a generic type representing the value that will be passed back to the event's listeners.
+In the above example, the `Person` class conforms to the `EventDispatcher` protocol, and defines one event: `event_died` which gets posted when the `Person` instance is about to be deallocated. The event is of the `EventRef<T>` type, where `T` is a generic type representing the value that will be passed back to the event's listeners.
 
 You can either make your events be of the `Event<T>` type - which is a struct. Or the `EventRef<T>` type - which is a class. Just depends on your situation. Under the hood, the `EventRef<T>` class holds a private `Event<T>` struct, which it forwards all calls to.
 
@@ -57,7 +57,7 @@ Bob is living his life...
 Bob died 😭
 ```
 
-In the above example, we added a listener to our person's `willDie` event. When the event was dispatched we simply printed `Bob is about to die 😭` to the console.
+In the above example, we added a listener to our person's `died` event. When the event was dispatched we simply printed `Bob died 😭` to the console.
 
 ### Removing Event Listeners
 Just like adding event listeners, we can also remove them. The `addListener` function is actually defined as: `addListener(handler: (T) -> ()) -> EventToken<T>`. It returns an `EventToken<T>` which can later be used to remove a listener from an event. The above example can be modified to show this:
