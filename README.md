@@ -40,7 +40,7 @@ Listening and reacting to events is just as easy as dispatching them. You simply
 
 ```swift
 var person: Person? = Person(name: "Bob", age: 23)
-person?.event.willDie.addListener { (value: Bool) in
+person?.event_died.addListener { (value: Bool) in
     print("Bob died 😭")
 }
 
