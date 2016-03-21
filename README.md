@@ -64,8 +64,8 @@ Just like adding event listeners, we can also remove them. The `addListener` fun
 
 ```swift
 var person: Person? = Person(name: "Bob", age: 23)
-let eventToken = person?.event.willDie.addListener { (value: Bool) in
-    print("\(person?.name) is about to die 😭")
+let eventToken = person?.event_died.addListener { (value: Bool) in
+    print("Bob died 😭")
 }
 
 print("\(person?.name) was born 😄")
@@ -73,20 +73,20 @@ print("\(person?.name) is living his life...")
 
 person = nil
 
-person?.event_willDie.removeListener(token: eventToken)
+person?.event_died.removeListener(token: eventToken)
 ```
 
 Alternatively, you can remove all listeners from a specific event by calling an event's `removeListeners()` function. The `EventDispatcher` protocol also requires that a `removeEventListeners()` function be implemented on any event-generating entity. Because of this, you can remove all listeners for all events by calling `removeEventListeners()` - assuming the event-generating entity has correctly implemented the function.
 
 ```swift
 // Removes all listeners for a specific event
-person?.event_willDie.removeListeners()
+person?.event_died.removeListeners()
 
 // Removes all listeners for every event on an entity
 person?.removeEventListeners()
 ```
 
-## ObservableValue
+## Observable Values
 The `ObservableValue<T>` type is a custom `EventDispatcher` that dispatches events when it's underlying value is about to change, and after it's value has successfully been changed. Simply put, it's a tiny value-wrapper that mimics **KVO** value changes. `ObservableValue<T>` defines two events:
 
 - `event_willChangeValue`
@@ -101,7 +101,7 @@ greeting.event_didChangeValue.addListener { (info: ObservableValueInfo)
 greeting.set("Bonjour")
 ```
 
-This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event.
+This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event. Notice closure provides a variable of the `ObservableValueInfo<T>` type. This is a struct that contains both the old and new values of the changed variable.
 
 ### Working with ObservableValue
 Because the `ObservableValue<T>` type "wraps" the actual value for event handling, simple set/get statements will not work. Instead, you must directly access it's underlying value via the `value` member. You can also use the `get() -> T` or `set(value: T)` functions.
@@ -134,10 +134,14 @@ x ~>> 13
 y ~>> "Hola!"
 z ~>> [4, 5, 6]
 
-// An ObservableValue's underlying value can be retrieved via a postfix '~'
+// An ObservableValue's value member can be accessed via a postfix '~'
 let xValue = x~
 let yValue = y~
 print("value of z is \(z~)")
 ```
 
 You can initialize an `ObservableValue` by prefixing a value with an tilde (`~`). You can optionally also surround the value with parenthesis. The `~>>` assignment operator can be used to directly assign a value to an `ObservableValue`'s underlying `value` member. Lastly, you can directly access the underlying `value` member with a postfix tilde (`~`).
+
+## Upcoming Features
+- `ObservableValue` subscripting. This will make working with tuples, arrays, and dictionaries easier.
+- More built-in `EventDispatcher` classes.
