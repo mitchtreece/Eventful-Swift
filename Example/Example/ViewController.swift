@@ -18,11 +18,13 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
+        self.label?.text = "x = \(x~)"
+        
         x.event_didChangeValue.addListener { (info) -> () in
             self.label?.text = "x = \(info.newValue)"
         }
                 
-        let recognizer = UITapGestureRecognizer(target: self, action: "handleTap:")
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         self.view.addGestureRecognizer(recognizer)
         
         createPerson()
