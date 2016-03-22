@@ -18,8 +18,8 @@ pod 'Eventful-Swift'
 4. Profit
 
 ### Manually
+You can also manually add the source files to your project.
 
-You can also manually add the source files to your project:
 1. Clone this git repo
 2. Add all the Swift files in the `Eventful-Swift/` subdirectory to your project
 3. Profit
