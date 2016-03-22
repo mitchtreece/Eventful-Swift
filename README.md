@@ -7,6 +7,7 @@ Eventful-Swift is a Swift library for lightweight event dispatching & handling. 
 ## Installation
 ### CocoaPods
 Eventful-Swift is integrated with CocoaPods!
+
 1. Add the following to your `Podfile`:
 ```
 use_frameworks!
@@ -17,6 +18,7 @@ pod 'Eventful-Swift'
 4. Profit
 
 ### Manually
+
 You can also manually add the source files to your project:
 1. Clone this git repo
 2. Add all the Swift files in the `Eventful-Swift/` subdirectory to your project
