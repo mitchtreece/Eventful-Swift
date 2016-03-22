@@ -4,6 +4,25 @@ Simple, lightweight, and useful event library for Swift.
 ## Overview
 Eventful-Swift is a Swift library for lightweight event dispatching & handling. By conforming to the `EventDispatcher` protocol, a class or struct can define various events (via `Event<T>` or `EventRef<T>`) that can be listened for and reacted upon. This library is a _work in progress_.
 
+## Installation
+### CocoaPods
+Eventful-Swift is integrated with CocoaPods!
+1. Add the following to your `Podfile`:
+```
+use_frameworks!
+pod 'Eventful-Swift'
+```
+2. In your project directory, run `pod install`
+3. Import the `EventfulSwift` module wherever you need it
+4. Profit
+
+### Manually
+You can also manually add the source files to your project:
+1. Clone this git repo
+2. Add all the Swift files in the `Eventful-Swift/` subdirectory to your project
+3. Profit
+
+## Events
 ### Dispatching Events
 Using `Event<T>` or `EventRef<T>`, you can easily add **action** → **reaction** based event handling to your existing code.
 
