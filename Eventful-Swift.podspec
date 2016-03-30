@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
   s.name         = "Eventful-Swift"
   s.module_name  = "EventfulSwift"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Simple, lightweight, and useful event library for Swift."
   s.description  = <<-DESC
     Eventful-Swift is a Swift library for lightweight event dispatching & handling.
