@@ -1,5 +1,5 @@
 //
-//  ValueObservable.swift
+//  EventfulValue.swift
 //  Eventful
 //
 //  Created by Mitch Treece on 3/16/16.
@@ -9,21 +9,21 @@
 import Foundation
 
 infix operator ~>> { associativity left precedence 80 }
-public func ~>> <T>(inout observable: ObservableValue<T>, value: T) {
-    observable.set(value)
+public func ~>> <T>(inout eventful: EventfulValue<T>, value: T) {
+    eventful.set(value)
 }
 
 prefix operator ~ {}
-public prefix func ~ <T>(value: T) -> ObservableValue<T> {
-    return ObservableValue(value)
+public prefix func ~ <T>(value: T) -> EventfulValue<T> {
+    return EventfulValue(value)
 }
 
 postfix operator ~ {}
-public postfix func ~ <T>(inout observable: ObservableValue<T>) -> T {
-    return observable.get()
+public postfix func ~ <T>(inout eventful: EventfulValue<T>) -> T {
+    return eventful.get()
 }
 
-public struct ObservableValueInfo<T> {
+public struct EventfulValueInfo<T> {
     
     public typealias ValueType = T
     
@@ -37,21 +37,21 @@ public struct ObservableValueInfo<T> {
     
 }
 
-public struct ObservableValue<T>: EventDispatcher {
+public struct EventfulValue<T>: EventDispatcher {
     
     public typealias ValueType = T
-    public typealias ObservationReturnType = ObservableValueInfo<ValueType>
+    public typealias ReturnType = EventfulValueInfo<ValueType>
     
-    public var event_willChangeValue = EventRef<ObservationReturnType>()
-    public var event_didChangeValue = EventRef<ObservationReturnType>()
+    public var event_willChangeValue = EventRef<ReturnType>()
+    public var event_didChangeValue = EventRef<ReturnType>()
     
     public var value: ValueType {
         willSet {
-            let info = ObservableValueInfo(value, newValue)
+            let info = EventfulValueInfo(value, newValue)
             self.event_willChangeValue.dispatch(info)
         }
         didSet {
-            let info = ObservableValueInfo(oldValue, value)
+            let info = EventfulValueInfo(oldValue, value)
             self.event_didChangeValue.dispatch(info)
         }
     }
