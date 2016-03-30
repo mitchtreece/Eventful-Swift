@@ -107,28 +107,28 @@ person?.event_died.removeListeners()
 person?.removeEventListeners()
 ```
 
-## Observable Values
-The `ObservableValue<T>` type is a custom `EventDispatcher` that dispatches events when it's underlying value is about to change, and after it's value has successfully been changed. Simply put, it's a tiny value-wrapper that mimics **KVO** value changes. `ObservableValue<T>` defines two events:
+## Eventful Values
+The `EventfulValue<T>` type is a custom `EventDispatcher` that dispatches events when it's underlying value is about to change, and after it's value has successfully been changed. Simply put, it's a tiny value-wrapper that mimics **KVO** value changes. `EventfulValue<T>` defines two events:
 
 - `event_willChangeValue`
 - `event_didChangeValue`
 
 ```swift
-var greeting = ObservableValue("Hello")
-greeting.event_didChangeValue.addListener { (info: ObservableValueInfo)
+var greeting = EventfulValue("Hello")
+greeting.event_didChangeValue.addListener { (info: EventfulValueInfo)
     print("greeting: didChangeValue - was: \"\(info.oldValue)\", now: \"\(info.newValue)\"")
 }
 
 greeting.set("Bonjour")
 ```
 
-This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event. Notice closure provides a variable of the `ObservableValueInfo<T>` type. This is a struct that contains both the old and new values of the changed variable.
+This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event. Notice closure provides a variable of the `EventfulValueInfo<T>` type. This is a struct that contains both the old and new values of the changed variable.
 
-### Working with ObservableValue
-Because the `ObservableValue<T>` type "wraps" the actual value for event handling, simple set/get statements will not work. Instead, you must directly access it's underlying value via the `value` member. You can also use the `get() -> T` or `set(value: T)` functions.
+### Working with EventfulValue
+Because the `EventfulValue<T>` type "wraps" the actual value for event handling, simple set/get statements will not work. Instead, you must directly access it's underlying value via the `value` member. You can also use the `get() -> T` or `set(value: T)` functions.
 
 ```swift
-var x = ObservableValue(7)
+var x = EventfulValue(7)
 
 // Will not work:
 x = 13
@@ -142,27 +142,27 @@ print("value of x is \(xValue)")
 ```
 
 #### Shorthand Syntax
-Having to manually type out `ObservableValue`, and access the underlying `value` member can get tedious. Luckily, there is also a shorthand syntax for initializing, modifying, and retrieving this value.
+Having to manually type out `EventfulValue`, and access the underlying `value` member can get tedious. Luckily, there is also a shorthand syntax for initializing, modifying, and retrieving this value.
 
 ```swift
-// These are all valid ways to initialize an ObservableValue
-var x = ObservableValue(10)
+// These are all valid ways to initialize an EventfulValue
+var x = EventfulValue(10)
 var y = ~("Hello, world!")
 var z = ~[1, 2, 3]
 
-// ObservableValue's can be modified by using the '~>>' operator
+// EventfulValue's can be modified by using the '~>>' operator
 x ~>> 13
 y ~>> "Hola!"
 z ~>> [4, 5, 6]
 
-// An ObservableValue's value member can be accessed via a postfix '~'
+// An EventfulValue's value member can be accessed via a postfix '~'
 let xValue = x~
 let yValue = y~
 print("value of z is \(z~)")
 ```
 
-You can initialize an `ObservableValue` by prefixing a value with an tilde (`~`). You can optionally also surround the value with parenthesis. The `~>>` assignment operator can be used to directly assign a value to an `ObservableValue`'s underlying `value` member. Lastly, you can directly access the underlying `value` member with a postfix tilde (`~`).
+You can initialize an `EventfulValue` by prefixing a value with an tilde (`~`). You can optionally also surround the value with parenthesis. The `~>>` assignment operator can be used to directly assign a value to an `EventfulValue`'s underlying `value` member. Lastly, you can directly access the underlying `value` member with a postfix tilde (`~`).
 
 ## Upcoming Features
-- `ObservableValue` subscripting. This will make working with tuples, arrays, and dictionaries easier.
+- `EventfulValue` subscripting. This will make working with tuples, arrays, and dictionaries easier.
 - More built-in `EventDispatcher` classes.

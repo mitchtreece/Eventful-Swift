@@ -12,7 +12,7 @@ import EventfulSwift
 class ViewController: UIViewController {
 
     @IBOutlet var label: UILabel?
-    var x: ObservableValue<Int> = ~(13)
+    var x: EventfulValue<Int> = ~(13)
     
     override func viewDidLoad() {
         
