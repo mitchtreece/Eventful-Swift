@@ -9,11 +9,11 @@
 import Foundation
 import EventfulSwift
 
-class Person: EventDispatcher {
+class Person: EventDispatcher, CustomStringConvertible {
     
     var name: String
     var age: Int
-    var event_died = EventRef<Bool>()
+    var event_died = Event<Bool>()
     
     func removeEventListeners() {
         self.event_died.removeListeners()
@@ -26,6 +26,10 @@ class Person: EventDispatcher {
     
     deinit {
         self.event_died.dispatch(true)
+    }
+    
+    var description: String {
+        return "Person(name: \(self.name), age: \(self.age))"
     }
     
 }

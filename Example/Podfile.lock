@@ -1,5 +1,5 @@
 PODS:
-  - Eventful-Swift (1.0.1)
+  - Eventful-Swift (1.0.2)
 
 DEPENDENCIES:
   - Eventful-Swift (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Eventful-Swift: 285e12f26eea2b8e339216509868b980a2537378
+  Eventful-Swift: 36176d657610f7742b8cdc255dede17772a4f583
 
 COCOAPODS: 0.39.0

@@ -23,35 +23,21 @@ public postfix func ~ <T>(inout eventful: EventfulValue<T>) -> T {
     return eventful.get()
 }
 
-public struct EventfulValueInfo<T> {
+public class EventfulValue<T>: EventDispatcher, CustomStringConvertible {
     
     public typealias ValueType = T
+    public typealias ReturnType = EventInfo<ValueType>
     
-    public let oldValue: ValueType
-    public let newValue: ValueType
-    
-    internal init(_ old: ValueType, _ new: ValueType) {
-        self.oldValue = old
-        self.newValue = new
-    }
-    
-}
-
-public struct EventfulValue<T>: EventDispatcher {
-    
-    public typealias ValueType = T
-    public typealias ReturnType = EventfulValueInfo<ValueType>
-    
-    public var event_willChangeValue = EventRef<ReturnType>()
-    public var event_didChangeValue = EventRef<ReturnType>()
+    public var event_willChangeValue = Event<ReturnType>()
+    public var event_didChangeValue = Event<ReturnType>()
     
     public var value: ValueType {
         willSet {
-            let info = EventfulValueInfo(value, newValue)
+            let info = EventInfo(value, newValue)
             self.event_willChangeValue.dispatch(info)
         }
         didSet {
-            let info = EventfulValueInfo(oldValue, value)
+            let info = EventInfo(oldValue, value)
             self.event_didChangeValue.dispatch(info)
         }
     }
@@ -61,7 +47,7 @@ public struct EventfulValue<T>: EventDispatcher {
         self.event_didChangeValue.removeListeners()
     }
     
-    public mutating func set(value: ValueType) {
+    public func set(value: ValueType) {
         self.value = value
     }
     
@@ -71,6 +57,12 @@ public struct EventfulValue<T>: EventDispatcher {
     
     public init(_ value: ValueType) {
         self.value = value
+    }
+    
+    // MARK: Protocol - CustomStringConvertible
+    
+    public var description: String {
+        return "EventfulValue: \(self.value)"
     }
     
 }
