@@ -1,6 +1,6 @@
 //
 //  EventInfo.swift
-//  Pods
+//  Pods-Swift
 //
 //  Created by Mitch Treece on 3/30/16.
 //
@@ -19,6 +19,8 @@ public struct EventInfo<T>: CustomStringConvertible {
         self.oldValue = old
         self.newValue = new
     }
+    
+    // MARK: Protocol - CustomStringConvertible
     
     public var description: String {
         return "EventInfo: oldValue = \(self.oldValue), newValue = \(self.newValue)"

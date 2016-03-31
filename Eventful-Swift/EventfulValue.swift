@@ -1,6 +1,6 @@
 //
 //  EventfulValue.swift
-//  Eventful
+//  Eventful-Swift
 //
 //  Created by Mitch Treece on 3/16/16.
 //  Copyright © 2016 Mitch Treece. All rights reserved.
@@ -42,11 +42,6 @@ public class EventfulValue<T>: EventDispatcher, CustomStringConvertible {
         }
     }
     
-    public func removeEventListeners() {
-        self.event_willChangeValue.removeListeners()
-        self.event_didChangeValue.removeListeners()
-    }
-    
     public func set(value: ValueType) {
         self.value = value
     }
@@ -57,6 +52,13 @@ public class EventfulValue<T>: EventDispatcher, CustomStringConvertible {
     
     public init(_ value: ValueType) {
         self.value = value
+    }
+    
+    // MARK: Protocol - EventDispatcher
+    
+    public func removeEventListeners() {
+        self.event_willChangeValue.removeListeners()
+        self.event_didChangeValue.removeListeners()
     }
     
     // MARK: Protocol - CustomStringConvertible

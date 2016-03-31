@@ -1,6 +1,6 @@
 //
 //  EventToken.swift
-//  Eventful
+//  Eventful-Swift
 //
 //  Created by Mitch Treece on 3/16/16.
 //  Copyright © 2016 Mitch Treece. All rights reserved.
