@@ -2,7 +2,7 @@
 Simple, lightweight, and useful event library for Swift.
 
 ## Overview
-Eventful-Swift is a Swift library for lightweight event dispatching & handling. By conforming to the `EventDispatcher` protocol, a class or struct can define various events (via `Event<T>` or `EventRef<T>`) that can be listened for and reacted upon. This library is a _work in progress_.
+Eventful-Swift is a Swift library for lightweight event dispatching & handling. By conforming to the `EventDispatcher` protocol, a class can define various events (via `Event<T>`) that can be listened for and reacted upon. This library is a _work in progress_.
 
 ## Installation
 ### CocoaPods
@@ -26,14 +26,14 @@ You can also manually add the source files to your project.
 
 ## Events
 ### Dispatching Events
-Using `Event<T>` or `EventRef<T>`, you can easily add **action** → **reaction** based event handling to your existing code.
+Using `Event<T>` you can easily add **action** → **reaction** based event handling to your existing code.
 
 ```swift
 class Person: EventDispatcher {
 
     var name: String
     var age: Int
-    var event_died = EventRef<Bool>()
+    var event_died = Event<Bool>()
 
     func removeEventListeners() {
         self.event_died.removeListeners()
@@ -50,9 +50,7 @@ class Person: EventDispatcher {
 
 }
 ```
-In the above example, the `Person` class conforms to the `EventDispatcher` protocol, and defines one event: `event_died` which gets posted when the `Person` instance is about to be deallocated. The event is of the `EventRef<T>` type, where `T` is a generic type representing the value that will be passed back to the event's listeners.
-
-You can either make your events be of the `Event<T>` type - which is a struct. Or the `EventRef<T>` type - which is a class. Just depends on your situation. Under the hood, the `EventRef<T>` class holds a private `Event<T>` struct, which it forwards all calls to.
+In the above example, the `Person` class conforms to the `EventDispatcher` protocol, and defines one event: `event_died` which gets posted when the `Person` instance is about to be deallocated. The event is of the `Event<T>` type, where `T` is a generic type representing the value that will be passed back to the event's listeners.
 
 You dispatch your event by simply calling it's `dispatch(value: T)` function, passing in the value to return to the event's listeners.
 
@@ -115,14 +113,14 @@ The `EventfulValue<T>` type is a custom `EventDispatcher` that dispatches events
 
 ```swift
 var greeting = EventfulValue("Hello")
-greeting.event_didChangeValue.addListener { (info: EventfulValueInfo)
+greeting.event_didChangeValue.addListener { (info: EventInfo)
     print("greeting: didChangeValue - was: \"\(info.oldValue)\", now: \"\(info.newValue)\"")
 }
 
 greeting.set("Bonjour")
 ```
 
-This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event. Notice closure provides a variable of the `EventfulValueInfo<T>` type. This is a struct that contains both the old and new values of the changed variable.
+This will set the value of `greeting` to `"Bonjour"`, and fire off our variable's `didChangeValue` event. Notice closure provides a variable of the `EventInfo<T>` type. This is a struct that contains both the old and new values of the changed variable.
 
 ### Working with EventfulValue
 Because the `EventfulValue<T>` type "wraps" the actual value for event handling, simple set/get statements will not work. Instead, you must directly access it's underlying value via the `value` member. You can also use the `get() -> T` or `set(value: T)` functions.
