@@ -9,8 +9,8 @@
 import Foundation
 
 infix operator ~>> { associativity left precedence 80 }
-public func ~>> <T>(inout eventful: EventfulValue<T>, value: T) {
-    eventful.set(value)
+public func ~>> <T>(eventful: inout EventfulValue<T>, value: T) {
+    eventful.set(value: value)
 }
 
 prefix operator ~ {}
@@ -18,8 +18,8 @@ public prefix func ~ <T>(value: T) -> EventfulValue<T> {
     return EventfulValue(value)
 }
 
-postfix operator ~ {}
-public postfix func ~ <T>(inout eventful: EventfulValue<T>) -> T {
+postfix operator ~
+public postfix func ~ <T>(eventful: inout EventfulValue<T>) -> T {
     return eventful.get()
 }
 
@@ -48,11 +48,11 @@ public struct EventfulValue<T>: EventDispatcher {
     public var value: ValueType {
         willSet {
             let info = EventfulValueInfo(value, newValue)
-            self.event_willChangeValue.dispatch(info)
+            self.event_willChangeValue.dispatch(value: info)
         }
         didSet {
             let info = EventfulValueInfo(oldValue, value)
-            self.event_didChangeValue.dispatch(info)
+            self.event_didChangeValue.dispatch(value: info)
         }
     }
     

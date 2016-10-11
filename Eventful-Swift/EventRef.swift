@@ -17,12 +17,13 @@ public class EventRef<T> {
     
     private var event: Event<ValueType>
     
-    public func addListener(handler: HandlerType) -> TokenType {
-        return self.event.addListener(handler)
+    @discardableResult
+    public func addListener(handler: @escaping HandlerType) -> TokenType {
+        return self.event.addListener(handler: handler)
     }
     
     public func removeListener(token: TokenType) {
-        self.event.removeListener(token)
+        self.event.removeListener(token: token)
     }
     
     public func removeListeners() {
@@ -30,7 +31,7 @@ public class EventRef<T> {
     }
     
     public func dispatch(value: ValueType) {
-        self.event.dispatch(value)
+        self.event.dispatch(value: value)
     }
     
     public init(event: Event<ValueType>) {

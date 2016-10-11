@@ -45,8 +45,8 @@ class ViewController: UIViewController {
         
     }
     
-    func handleTap(recognizer: UIGestureRecognizer) {
-        let random = Int.random(0...100)
+    @objc private func handleTap(_ recognizer: UIGestureRecognizer) {
+        let random = Int.random(0..<100)
         x ~>> random
     }
 
@@ -58,9 +58,9 @@ class ViewController: UIViewController {
 
 extension Int {
     
-    static func random(range: Range<Int>) -> Int {
-        let min = range.startIndex
-        let max = range.endIndex
+    static func random(_ range: Range<Int>) -> Int {
+        let min = range.lowerBound
+        let max = range.upperBound
         return Int(arc4random_uniform(UInt32(max - min))) + min
     }
     

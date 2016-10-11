@@ -25,7 +25,7 @@ class Person: EventDispatcher {
     }
     
     deinit {
-        self.event_died.dispatch(true)
+        self.event_died.dispatch(value: true)
     }
     
 }

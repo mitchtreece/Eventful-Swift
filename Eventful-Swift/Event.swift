@@ -17,7 +17,8 @@ public struct Event<T> {
     
     private var listeners = [ListenerType]()
     
-    public mutating func addListener(handler: HandlerType) -> TokenType {
+    @discardableResult
+    public mutating func addListener(handler: @escaping HandlerType) -> TokenType {
         let listener = ListenerType(handler: handler)
         self.listeners.append(listener)
         let token = EventToken(listener: listener)

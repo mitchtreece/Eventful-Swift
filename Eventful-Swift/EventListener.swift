@@ -15,7 +15,7 @@ public class EventListener<T> {
     
     internal var handler: HandlerType
     
-    internal init(handler h: HandlerType) {
+    internal init(handler h: @escaping HandlerType) {
         self.handler = h
     }
     
